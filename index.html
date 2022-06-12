@@ -17,123 +17,191 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <script src="script.js"></script>
 
     <title>Zeluxia Dashboard</title>
   </head>
   <body>
     <!--DOUBLE NAVBAR -->
-    <div class="container">
-      <!--NAV 1-->
-      <div class="top_nav">
-        <div class="left">
-          <ul class="nav_links">
-            <li class="dropdown" id="currency-change">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                >Taka</a
-              >
-            </li>
-            <li>
-              <span class="phone">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                "Bkash Merchant- 01944448333"</span
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="right">
-          <ul class="nav_links">
-            <li>
-              <a href="#">TRACK ORDER</a>
-            </li>
-            <li>
-              <a href="#">BE AN AFFILIATE PARTNER</a>
-            </li>
-            <li>
-              <a href="#">MY PANEL</a>
-            </li>
-            <li>
-              <a href="#">LOGOUT</a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fab fa-youtube"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!--NAV 1 END-->
-
-      <!--NAV 2-->
-      <div class="bottom_nav">
-        <img class="logo" src="img/logo.png" alt="logo" />
-
-        <form role="search" class="form d-flex w-50">
-          <div class="input-group">
-            <input type="hidden" id="txt-category" />
-            <input
-              type="text"
-              id="txt-search"
-              class="form-control"
-              placeholder="I am searching for..."
-            />
-            <div class="input-group-btn">
-              <button
-                type="button"
-                class="btn btn-light dropdown-toggle"
-                id="dropdowncategory"
-                data-bs-toggle="dropdown"
-              >
-                <span id="srch-category">Category</span>
-              </button>
+    <div class="header bg-white">
+      <div class="top-nav">
+        <div class="container">
+          <div class="row d-flex">
+            <div class="col-lg-4">
               <ul
-                class="dropdown-menu"
-                id="mnu-category"
-                aria-labelledby="dropdowncategory"
+                class="nav-links d-lg-inline-block d-flex justify-content-between"
               >
-                <li><a class="dropdown-item" href="#">Apps</a></li>
-                <li><a class="dropdown-item" href="#">eBooks</a></li>
-                <li><a class="dropdown-item" href="#">Games</a></li>
-                <li><a class="dropdown-item" href="#">Music</a></li>
-                <li><a class="dropdown-item" href="#">Videos</a></li>
+                <li class="dropdown" id="currency-change">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                    >Taka</a
+                  >
+                </li>
+                <li>
+                  <span class="phone">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    "Bkash Merchant- 01944448333"</span
+                  >
+                </li>
               </ul>
             </div>
-            <span class="input-group-btn">
-              <button id="btn-search" type="submit" class="btn btn-light">
-                <span>
-                  <i class="fas fa-search"></i>
-                </span>
-              </button>
-            </span>
+            <div class="col-8 text-right d-none d-lg-block">
+              <ul class="nav-links">
+                <li>
+                  <a href="#">TRACK ORDER</a>
+                </li>
+                <li>
+                  <a href="#">BE AN AFFILIATE PARTNER</a>
+                </li>
+                <li>
+                  <a href="#">MY PANEL</a>
+                </li>
+                <li>
+                  <a href="#">LOGOUT</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </form>
-
-        <div class="icons d-flex">
-          <ul class="nav_links">
-            <li>
-              <i class="fas fa-sync"></i><span>Compare</span>
-              <span class="badge bg-danger" id="lblCompareCount"> 0 </span>
-            </li>
-            <li>
-              <i class="far fa-heart"></i><span>Wishlist</span>
-              <span class="badge bg-danger" id="lblWishCount"> 8 </span>
-            </li>
-            <li>
-              <i class="fas fa-shopping-cart"></i><span>Cart</span>
-              <span class="badge bg-danger" id="lblCartCount"> 0 </span>
-            </li>
-          </ul>
         </div>
       </div>
-      <!--NAV 2 END-->
+
+      <div class="bottom-nav position-relative">
+        <div class="container">
+          <div class="row d-flex align-items-center no-gutters">
+            <div class="col-lg-3 col-8 d-flex">
+              <div class="mobile-menu-icon d-block d-lg-none">
+                <a href onclick="sideMenuOpen(this)">
+                  <div class="menu-icon">
+                    <i class="fas fa-bars"></i>
+                  </div>
+                </a>
+              </div>
+
+              <a class="navbar-brand w-100" href="#">
+                <img src="img/logo.png" alt="logo" />
+              </a>
+
+              <div class="category-menu-icon d-none d-xl-block">
+                <div class="dropdown-toggle category-menu" id="category-menu">
+                  <span class="navbar-toggle-icon d-inline-block">
+                    <i class="fas fa-bars"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-9 col-4 position-static">
+              <div class="d-flex w-100">
+                <div class="search-form flex-grow-1 px-4 d-none d-lg-block">
+                  <form action="#" method="GET">
+                    <div class="form d-flex position-relative">
+                      <div class="search-box w-100">
+                        <input
+                          type="text"
+                          aria-label="Search"
+                          id="search"
+                          name="ques"
+                          class="w-100"
+                          placeholder="I am Shopping for..."
+                          autocomplete="off"
+                        />
+                      </div>
+
+                      <div class="dropdown">
+                        <div class="default_option">All</div>
+                        <ul>
+                          <li>All</li>
+                          <li>Makeup Shop</li>
+                          <li>Health & Beauty Shop</li>
+                          <li>Hair Care Shop</li>
+                          <li>Fashion Accessories</li>
+                        </ul>
+                      </div>
+                      <button class="d-none d-lg-block" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="bottom-nav-icons d-inline-block ml-auto">
+                  <div class="d-inline-block d-lg-none">
+                    <div class="nav-search-box">
+                      <a href="#" class="nav-box-link">
+                        <i
+                          class="fas fa-search d-inline-block nav-box-icon"
+                          style="margin-left: 30px"
+                        ></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-inline-block">
+                    <div class="nav-compare-box" id="compare">
+                      <a href="#" class="nav-box-link">
+                        <i class="fas fa-sync d-inline-block nav-box-icon"></i>
+                        <span class="nav-box-text d-none d-lg-inline-block"
+                          >Comapre
+                        </span>
+                        <span
+                          class="nav-box-number position-absolute translate-middle badge rounded-pill px-2 py-0 bg-danger"
+                          style="margin-left: -30px"
+                          >0</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                  <div class="d-none d-lg-inline-block">
+                    <div class="nav-wish-box" id="wish">
+                      <a href="#" class="nav-box-link">
+                        <i class="far fa-heart d-inline-block nav-box-icon"></i>
+                        <span class="nav-box-text d-none d-lg-inline-block"
+                          >Wishlist
+                        </span>
+                        <span
+                          class="nav-box-number position-absolute translate-middle badge rounded-pill px-2 py-0 bg-danger"
+                          style="margin-left: -30px"
+                          >8</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                  <div class="d-inline-block">
+                    <div class="nav-cart-box" id="cart">
+                      <a href="#" class="nav-box-link">
+                        <i
+                          class="fas fa-shopping-cart d-inline-block nav-box-icon"
+                          style="font-size: 22px"
+                        ></i>
+                        <span class="nav-box-text d-none d-lg-inline-block"
+                          >Cart
+                        </span>
+                        <span
+                          class="nav-box-number position-absolute translate-middle badge rounded-pill px-2 py-0 bg-danger"
+                          style="margin-left: -15px"
+                          >0</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!--DOUBLE NAV END-->
 
@@ -141,7 +209,10 @@
     <section class="profile py-4 bg-light">
       <div class="container">
         <div class="row g-4">
-          <div class="col-md-3 mx-0" style="background-color: white">
+          <div
+            class="col-lg-3 d-none d-lg-block mx-0"
+            style="background-color: white"
+          >
             <div class="profile-box text-center p-3">
               <img src="img/user.png" class="image rounded-circle" />
               <div class="name p-2">Tanisha Kabir Kakon</div>
@@ -243,7 +314,7 @@
             </div>
           </div>
 
-          <div class="col-md-9">
+          <div class="col-lg-9">
             <div class="tab-content">
               <div class="tab-pane show active" id="tab-1">
                 <div class="row d-flex g-4">
@@ -713,5 +784,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
   </body>
 </html>
